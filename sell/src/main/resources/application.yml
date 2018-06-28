@@ -1,0 +1,35 @@
+spring:
+#   不同环境下使用不同的配置文件
+#  profiles:
+#    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.24.133.45:3306/sell?characterEncoding=utf8&useSSL=true
+    username: root
+    password: zkw
+  jpa:
+    hibernate:
+      #ddl-auto:create----每次运行该程序，没有表格会新建表格，表内有数据会清空
+      #ddl-auto:create-drop----每次程序结束的时候会清空表
+      #ddl-auto:update----每次运行程序，没有表格会新建表格，表内有数据不会清空，只会更新
+      #ddl-auto:validate----运行程序会校验数据与数据库的字段类型是否相同，不同会报错
+      ddl-auto: update
+    show-sql: true
+
+server:
+  servlet:
+    context-path: /sell
+
+#配置日志文件..
+#第一种简单配法
+#
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  #下面两个选一个就可以
+  #path: /var/log/tomcat/
+  file: mylog.log
+  #日志启动级别
+  #level: debug   这里有问题
+
+#第二种，创建logback-spring.xml文件
